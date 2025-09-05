@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PhishGuard AI — Enterprise Threat Console</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡</text></svg>">
+</head>
+<body>
+  <div class="watermark">Created by Mohammed Sufiyan</div>
+
+  <!-- Header -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🛡</span>
+      <div>
+        <div class="title">PhishGuard <strong>AI</strong></div>
+        <div class="subtitle">Email Threat Analysis Console</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="themeToggle" title="Toggle theme">🌓</button>
+      <button id="printReport" title="Print report">🖨</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: Input Form -->
+    <section class="card form-card">
+      <h2>Scan an Email</h2>
+      <p class="muted">Paste the email subject & body. The AI will analyze language, links and signals.</p>
+
+      <form id="emailForm" action="/" method="POST" novalidate>
+        <label class="label">Subject</label>
+        <input id="subject" name="subject" class="input" type="text" placeholder="Urgent: Verify your account" autocomplete="off" required>
+
+        <label class="label">Body</label>
+        <textarea id="body" name="body" class="textarea" rows="9" placeholder="Paste full email text (headers OK)" required></textarea>
+
+        <div class="form-row">
+          <label class="small-check"><input id="storeLocal" type="checkbox" checked> Keep this scan in local history</label>
+          <div class="btn-row">
+            <button id="runBtn" class="btn primary" type="submit">🔍 Run Scan</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="note">
+        <strong>Note:</strong> Results are computed by the trained model. Frontend highlights and URL checks are client-side helpers.
+      </div>
+    </section>
+
+    <!-- RIGHT: Report -->
+    <section class="card report-card">
+      <div class="report-head">
+        <h2>Threat Report</h2>
+        <div id="statusBadge" class="badge">Idle</div>
+      </div>
+
+      <!-- Scanning Animation -->
+      <div id="scanning" class="scan hidden">
+        <div class="radar">
+          <div class="beam"></div>
+          <div class="ring r1"></div>
+          <div class="ring r2"></div>
+        </div>
+        <div class="muted center">Analyzing language & links…</div>
+      </div>
+
+      <!-- Threat Report Panel -->
+      <div id="verdictPanel" class="card hidden">
+        <div class="card-header">
+          <span id="statusBadge" class="badge">Idle</span>
+          <h2 id="verdictTitle">Result Pending</h2>
+          <p id="verdictSubtitle">Submit an email for analysis.</p>
+        </div>
+
+        <div class="card-body">
+          <!-- Risk Meter -->
+          <div class="risk-meter">
+            <div class="progress">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <p><span id="riskPercent">0%</span> Threat Level</p>
+          </div>
+
+          <!-- Key Indicators -->
+          <section id="signalsPanel">
+            <h3>Key Indicators</h3>
+            <ul id="indicatorsList">
+              <li class="muted">No scan yet</li>
+            </ul>
+          </section>
+
+          <!-- Domains & URLs -->
+          <section id="linksPanel">
+            <h3>Extracted Domains / URLs</h3>
+            <ul id="domainsList">
+              <li class="muted">No URLs yet</li>
+            </ul>
+          </section>
+
+          <!-- Email Preview -->
+          <section id="previewPanel">
+            <h3>Email Preview</h3>
+            <strong id="previewSubject">—</strong>
+            <p id="previewBody" class="muted">No email body</p>
+          </section>
+        </div>
+      </div>
+
+      <!-- Local History -->
+      <div id="historyPanel" class="panel">
+        <h4>Local Scan History</h4>
+        <ul id="historyList" class="history"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay hidden">
+    <div class="overlay-card">
+      <div class="spinner"></div>
+      <div class="muted">Submitting to model...</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>© 2025 PhishGuard AI</div>
+    <div class="footer-right">Built by <strong>Mohammed Sufiyan</strong></div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
