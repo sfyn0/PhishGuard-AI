@@ -31,8 +31,8 @@ Installation
 
 
 
-git clone https://github.com/your-username/PhishGuard-AI.git
-cd PhishGuard-AI
+ git clone https://github.com/sfyn0/PhishGuard-AI.git
+ cd PhishGuard-AI
 
 2. Create a virtual environment (optional but recommended)
 
@@ -57,13 +57,13 @@ Usage
 
 
 
-python app.py
+ python app.py
 
 2. Open your browser at
 
 
 
-http://127.0.0.1:5000
+ http://127.0.0.1:5000
 
 3. Submit an email
 
@@ -97,19 +97,10 @@ Local scan history (optional)
 Results:
 <img width="1882" height="917" alt="image" src="https://github.com/user-attachments/assets/5d454cdc-f4f3-43b7-86d0-963f3c28eb53" />
 
+---
 Project Structure
 
-PhishGuard-AI/
-│
-├── app.py # Flask backend and model integration
-├── monitor.py             # (Optional) File monitoring for future extensions
-├── static/
-│   ├── style.css          # Dashboard styles
-│   └── script.js          # Frontend JavaScript
-├── templates/
-│   └── index.html         # Dashboard HTML template
-├── requirements.txt       # Python dependencies
-└── README.md
+<img width="947" height="492" alt="image" src="https://github.com/user-attachments/assets/08e47306-7a58-4588-831a-5f4ce9de9790" />
 
 
 ---
@@ -176,7 +167,7 @@ This project is MIT Licensed.
 Author
 
 Mohammed Sufiyan
-GitHub | LinkedIn
+sfyn0
 
 
 ---
