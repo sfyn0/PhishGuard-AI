@@ -94,6 +94,8 @@ Local scan history (optional)
 
 
 ---
+Results:
+<img width="1882" height="917" alt="image" src="https://github.com/user-attachments/assets/5d454cdc-f4f3-43b7-86d0-963f3c28eb53" />
 
 Project Structure
 
